@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Card</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;400;600;700;800&display=swap">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #333333;
+    font-family: 'Sora', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #333;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2b2b2b;
+    border-radius: 5px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 233px; 
+    overflow: hidden;
+  }
+
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #313131;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .card:not(:first-child) {
+    transform: translateY(100%);
+  }
+
+  .content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    flex-grow: 1;
+    margin-bottom: 10px;
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .links a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    flex: 0 0 auto;
+    width: 150px;
+    text-align: center;
+  }
+
+  .links a:hover {
+    background-color: #fff;
+    color: #111;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <div class="photo"></div>
+    <div class="content">
+      <div class="title">Stabosas pinger</div>
+      <div class="description">Want millions of pings on discord? Join here!! If u dont want millions of pings u can still join and disable the pinger! Though there is not much of a community</div>
+      <div class="links">
+        <a href="https://discord.gg/2NazMG7NYe" class="button" target="_blank">Join Server</a>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="photo"></div>
+    <div class="content">
+      <div class="title">Gif Vault</div>
+      <div class="description">Want gifs for discord? Find some here on this website! I dont upade the gifs much but sometimes i do! (WARNING SOME GIFS ARE NSFW!)</div>
+      <div class="links">
+        <a href="https://Gifyxyz.replit.app" class="button" target="_blank">Open Website</a>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="photo"></div>
+    <div class="content">
+      <div class="title">There is no more projects</div>
+      <div class="description">These are the only projects im working on or finished!</div>
+      <div class="links">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const container = document.querySelector(".container");
+      const cards = document.querySelectorAll(".card");
+      let currentCardIndex = 0;
+  
+      function shuffleCards(event) {
+          const direction = event.deltaY > 0 ? 1 : -1; // Detect scroll direction
+          currentCardIndex = (currentCardIndex + direction + cards.length) % cards.length;
+          cards.forEach((card, index) => {
+              const offset = (index - currentCardIndex + cards.length) % cards.length;
+              card.style.transform = `translateY(${offset * 100}%)`;
+          });
+      }
+  
+      container.addEventListener("wheel", shuffleCards);
+    });
+  </script>
+
+</body>
+</html>
