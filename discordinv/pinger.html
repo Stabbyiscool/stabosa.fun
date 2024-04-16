@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invite</title>
+  <meta property="og:title" content="STABOSAS PINGER!">
+  <meta name="theme-color" content="#e0474c">
+  <meta property="og:image" content="">
+  <meta property="og:description" content="Press the link above to join STABOSAS PINGER!">
+  <meta property="og:url" content="stabosa.xyz">
+  <style>
+    body {
+      background-color: #333;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #countdown {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="redirecting">Redirecting you to PINGER server in... </div>
+  <div id="countdown">5</div>
+
+  <script>
+    function countdown() {
+      var countdownElement = document.getElementById("countdown");
+      var count = 5;
+      var timer = setInterval(function () {
+        count--;
+        countdownElement.textContent = count;
+        if (count <= 0) {
+          clearInterval(timer);
+          window.location.href = "https://discord.gg/8Sp5NA2Yjq";
+        }
+      }, 1000);
+    }
+
+    window.onload = function () {
+      countdown();
+    };
+  </script>
+</body>
+
+</html>
