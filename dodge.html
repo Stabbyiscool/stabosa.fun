@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Cursor Follow Ball (Bigger)</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    #container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .ball {
+        position: absolute;
+        border-radius: 50%;
+    }
+    .cursor-ball {
+        background-color: red;
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s, opacity 0.3s;
+        cursor: pointer;
+    }
+    .cursor-ball.dead {
+        transform: scale(0);
+        opacity: 0;
+    }
+    .bouncing-ball {
+        background-color: blue;
+    }
+    #ball-count {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        color: white;
+        display: none;
+    }
+    #game-over {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        display: none;
+        color: white;
+    }
+    #restart-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    #restart-btn:hover {
+        background-color: #45a049;
+    }
+    #settings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <div id="cursor-ball" class="ball cursor-ball"></div>
+    <div id="ball-count">Balls: 0</div>
+    <div id="game-over">
+        <h1>Game Over</h1>
+        <button id="restart-btn">Restart</button>
+    </div>
+    <div id="settings">
+        <h2>DODGE</h2>
+        <p>How to play. Make the red circle avoid the blue circles. once 100 balls have spawned the game stops spawning them.</p>
+        <input type="checkbox" id="orbit-toggle">
+        <label for="orbit-toggle">Enable Orbit</label><br> <p>When orbit is enabled the red circle orbits your mouse (do not turn this on for a first time play)</p>
+        <button id="start-btn">Start</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var container = document.getElementById('container');
+    var cursorBall = document.getElementById('cursor-ball');
+    var orbitToggle = document.getElementById('orbit-toggle');
+    var startButton = document.getElementById('start-btn');
+    var restartButton = document.getElementById('restart-btn');
+    var balls = [];
+    var gameRunning = false;
+
+    startButton.addEventListener('click', function() {
+        startGame();
+        document.getElementById('settings').style.display = 'none';
+    });
+
+    restartButton.addEventListener('click', function() {
+        location.reload();
+    });
+
+    function startGame() {
+        gameRunning = true;
+        document.getElementById('ball-count').style.display = 'block';
+        document.getElementById('game-over').style.display = 'none';
+        cursorBall.classList.remove('dead');
+        setInterval(createBouncingBall, 1000);
+        startButton.disabled = true;
+    }
+
+    function createBouncingBall() {
+        if (!gameRunning) return; // Stop spawning balls if game is over
+        var bouncingBall = document.createElement('div');
+        bouncingBall.className = 'ball bouncing-ball';
+        container.appendChild(bouncingBall);
+        balls.push(bouncingBall);
+
+        var minSize = 40;
+        var maxSize = 120;
+        var randomSize = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize;
+        bouncingBall.style.width = bouncingBall.style.height = randomSize + 'px';
+
+        var bouncingBallWidth = bouncingBall.offsetWidth;
+        var bouncingBallHeight = bouncingBall.offsetHeight;
+        var bouncingBallX = Math.random() * (container.offsetWidth - bouncingBallWidth);
+        var bouncingBallY = Math.random() * (container.offsetHeight - bouncingBallHeight);
+        var speedX = (Math.random() - 0.5) * 6;
+        var speedY = (Math.random() - 0.5) * 6;
+
+        function animateBouncingBall() {
+            bouncingBallX += speedX;
+            bouncingBallY += speedY;
+
+            if (bouncingBallX + bouncingBallWidth >= container.offsetWidth || bouncingBallX <= 0) {
+                speedX = -speedX;
+            }
+            if (bouncingBallY + bouncingBallHeight >= container.offsetHeight || bouncingBallY <= 0) {
+                speedY = -speedY;
+            }
+
+            bouncingBall.style.left = bouncingBallX + 'px';
+            bouncingBall.style.top = bouncingBallY + 'px';
+
+            var cursorRect = cursorBall.getBoundingClientRect();
+            var ballRect = bouncingBall.getBoundingClientRect();
+
+            if (checkCollision(cursorRect, ballRect)) {
+                gameOver();
+            }
+        }
+
+        setInterval(animateBouncingBall, 20);
+
+        function checkCollision(rect1, rect2) {
+            return !(rect1.right < rect2.left || 
+                     rect1.left > rect2.right || 
+                     rect1.bottom < rect2.top || 
+                     rect1.top > rect2.bottom);
+        }
+
+        updateBallCount();
+    }
+
+    function updateBallCount() {
+        document.getElementById('ball-count').textContent = "Balls: " + balls.length;
+    }
+
+    function gameOver() {
+        gameRunning = false;
+        balls.forEach(function(ball) {
+            ball.remove();
+        });
+        document.getElementById('game-over').style.display = 'block';
+        cursorBall.classList.add('dead');
+        startButton.disabled = false;
+    }
+
+    document.addEventListener('mousemove', function(event) {
+        var mouseX = event.clientX;
+        var mouseY = event.clientY;
+
+        cursorBall.style.left = mouseX - (cursorBall.offsetWidth / 2) + 'px';
+        cursorBall.style.top = mouseY - (cursorBall.offsetHeight / 2) + 'px';
+
+        if (orbitToggle.checked) {
+            var orbitRadius = 100;
+            var angle = (performance.now() / 1000) * Math.PI * 2;
+
+            var orbitX = mouseX + Math.cos(angle) * orbitRadius;
+            var orbitY = mouseY + Math.sin(angle) * orbitRadius;
+
+            cursorBall.style.left = orbitX - (cursorBall.offsetWidth / 2) + 'px';
+            cursorBall.style.top = orbitY - (cursorBall.offsetHeight / 2) + 'px';
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
