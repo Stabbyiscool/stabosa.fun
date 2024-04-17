@@ -192,3 +192,29 @@ body {
 .code-input input[type="submit"]:hover {
   background-color: #45a049;
 }
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  .image-container {
+    width: 100px;
+    height: 100px;
+  }
+  .card {
+    padding: 10px;
+  }
+  .links a {
+    width: 120px;
+    padding: 8px 12px;
+  }
+  .icons img {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+  }
+  .code-input input[type="text"] {
+    width: 150px;
+  }
+  .code-input input[type="submit"] {
+    padding: 8px 16px;
+  }
+}
