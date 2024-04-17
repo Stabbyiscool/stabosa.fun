@@ -9,17 +9,8 @@
 <body>
   <div id="output"></div>
   <h2>Bai!</h2>
-  <audio id="audio" autoplay>
-    <source src="calm.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+
   <script>
-    window.onload = function() {
-      var audio = document.getElementById("audio");
-      audio.volume = 1.0;
-      audio.play();
-    };
-    wait(0.5)
     window.onbeforeunload = function() { /* none */ };
     while (true) {
         location.reload(true);
