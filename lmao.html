@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite LMAO</title>
+<style>
+    body {
+        font-family: monospace;
+        margin: 0;
+    }
+    .content {
+        white-space: pre-wrap;
+    }
+</style>
+</head>
+<body>
+<div class="content"></div>
+<script>
+    const content = document.querySelector('.content');
+    let html = '';
+
+    function generateLmaoText() {
+        const lmaoText = 'LMA' + 'O'.repeat(1000); // 'LMA' followed by 1000 'O's
+        for (let i = 0; i < 500; i++) {
+            html += lmaoText + '\n'; // Add line breaks for each repetition
+        }
+        content.innerHTML = html;
+    }
+
+    generateLmaoText(); // Initial content
+
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            generateLmaoText(); // Load more content when scrolled to bottom
+        }
+    });
+</script>
+</body>
+</html>
