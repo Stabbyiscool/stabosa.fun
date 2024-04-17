@@ -144,7 +144,7 @@
       let currentCardIndex = 0;
   
       function shuffleCards(event) {
-          const direction = event.deltaY > 0 ? 1 : -1; // Detect scroll direction
+          const direction = event.deltaY > 0 ? 1 : -1; 
           currentCardIndex = (currentCardIndex + direction + cards.length) % cards.length;
           cards.forEach((card, index) => {
               const offset = (index - currentCardIndex + cards.length) % cards.length;
