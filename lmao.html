@@ -18,21 +18,21 @@
 <div class="content">LMA</div>
 <script>
     const content = document.querySelector('.content');
-    let oCount = 0;
+    let html = 'LMA';
 
-    function addOs() {
-        const oText = 'O'.repeat(1000);
-        const oDiv = document.createElement('div');
-        oDiv.textContent = oText;
-        content.appendChild(oDiv);
-        oCount++;
+    function generateLmaoText() {
+        const lmaoText = 'O'.repeat(243); 
+        for (let i = 0; i < 500; i++) {
+            html += lmaoText + '\n'; 
+        }
+        content.innerHTML = html;
     }
 
-    addOs();
+    generateLmaoText(); 
 
     window.addEventListener('scroll', () => {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            addOs();
+            generateLmaoText();
         }
     });
 </script>
