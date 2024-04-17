@@ -12,9 +12,14 @@
 
   <script>
     window.onbeforeunload = function() { /* none */ };
-    while (true) {
+    
+    function reloadPage() {
+      setTimeout(function() {
         location.reload(true);
-    };
+      }, 500); 
+    }
+    
+    reloadPage();
   </script>
 </body>
 </html>
