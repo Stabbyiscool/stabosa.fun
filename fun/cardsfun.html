@@ -158,23 +158,26 @@
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const container = document.querySelector(".container");
-      const cards = document.querySelectorAll(".card");
-      let currentCardIndex = 0;
-  
-      function shuffleCards(event) {
-          const direction = event.deltaY > 0 ? 1 : -1; 
-          currentCardIndex = (currentCardIndex + direction + cards.length) % cards.length;
-          cards.forEach((card, index) => {
-              const offset = (index - currentCardIndex + cards.length) % cards.length;
-              card.style.transform = `translateY(${offset * 100}%)`;
-          });
+  document.addEventListener("DOMContentLoaded", function() {
+    const container = document.querySelector(".container");
+    const cards = document.querySelectorAll(".card");
+    let currentCardIndex = 0;
+
+    function shuffleCards() {
+      currentCardIndex = (currentCardIndex + 1) % cards.length;
+      cards.forEach((card, index) => {
+        const offset = (index - currentCardIndex + cards.length) % cards.length;
+        card.style.transform = `translateY(${offset * 100}%)`;
+      });
+    }
+
+    container.addEventListener("click", function(event) {
+      if (event.target.closest('.card') && !event.target.matches('a')) {
+        shuffleCards();
       }
-  
-      container.addEventListener("wheel", shuffleCards);
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
