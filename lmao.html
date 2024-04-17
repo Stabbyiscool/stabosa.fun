@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Infinite LMAO</title>
+<title>LMAO</title>
 <style>
     body {
         font-family: monospace;
@@ -21,18 +21,18 @@
     let html = '';
 
     function generateLmaoText() {
-        const lmaoText = 'LMA' + 'O'.repeat(1000); // 'LMA' followed by 1000 'O's
+        const lmaoText = 'LMA' + 'O'.repeat(1000); 
         for (let i = 0; i < 500; i++) {
-            html += lmaoText + '\n'; // Add line breaks for each repetition
+            html += lmaoText + '\n'; 
         }
         content.innerHTML = html;
     }
 
-    generateLmaoText(); // Initial content
+    generateLmaoText(); 
 
     window.addEventListener('scroll', () => {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            generateLmaoText(); // Load more content when scrolled to bottom
+            generateLmaoText();
         }
     });
 </script>
