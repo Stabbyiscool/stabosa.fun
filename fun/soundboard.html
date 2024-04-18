@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@Stabosa⁸⁷</title>
+  <meta property="og:title" content="Stabosa.xyz">
+  <meta name="theme-color" content="#0047AB">
+  <meta property="og:image" content="pfp.png">
+  <meta property="og:description" content="Silly little developer that makes discord bots sometimes and other stuff ig">
+  <meta property="og:url" content="stabosa.xyz">
+  <link rel="icon" type="image/png" href="https://stabosa.xyz/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="bigmama.js"></script>
+  <style>
+    body {
+      font-family: 'Sora', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 50px;
+      font-weight: 700;
+    }
+
+    #soundboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button {
+      margin-bottom: 10px;
+      padding: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #0047AB;
+      border: none;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    audio {
+      display: none;
+    }
+
+    #stopButton {
+      background-color: red;
+    }
+
+    #ttsInput {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      border: 2px solid #0047AB;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    #ttsButton {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0047AB;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #ttsButton:hover {
+      background-color: #003177;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Soundboard</h1>
+
+  <div id="soundboard">
+    <button class="button" onclick="playSound('sound1')">Loudest sound</button>
+    <button class="button" onclick="playSound('sound2')">Metal pipe</button>
+    <button class="button" onclick="playSound('sound3')">Samsong bass boost</button>
+    <button class="button" onclick="playSound('sound4')">BLEEP</button>
+    <button class="button" onclick="playSound('sound5')">Nuh uh</button>
+    <button class="button" onclick="playSound('sound6')">Correct</button>
+    <button class="button" onclick="playSound('sound7')">Ping</button>
+    <button class="button" onclick="playSound('sound8')">RAGE</button>
+
+    <button class="button" id="stopButton" onclick="stopAllSounds()">STOP ALL SOUNDS</button>
+  </div>
+
+  <audio id="sound1" src="sounds/loudestsoundever.mp3"></audio>
+  <audio id="sound2" src="sounds/metal-pipe.mp3"></audio>
+  <audio id="sound3" src="sounds/Samsong-bass-boost.mp3"></audio>
+  <audio id="sound4" src="sounds/BLEEP.mp3"></audio>
+  <audio id="sound5" src="sounds/ERRRR.mp3"></audio>
+  <audio id="sound6" src="sounds/Correct.mp3"></audio>
+  <audio id="sound7" src="sounds/ping.mp3"></audio>
+  <audio id="sound8" src="sounds/rage.mp3"></audio>
+
+
+  <h2>Text-to-Speech</h2>
+  <input type="text" id="ttsInput" placeholder="Enter text">
+  <button id="ttsButton" onclick="speakText()">Speak</button>
+  <button id="ttsButton" onclick="loudspeakText()">Speak but LOUD</button>
+
+  <script>
+    function playSound(id) {
+      console.log("Playing sound: " + id);
+      var sound = document.getElementById(id);
+      sound.play();
+    }
+
+    function stopAllSounds() {
+      console.log("Stopping all sounds");
+      var sounds = document.querySelectorAll('audio');
+      sounds.forEach(function(sound) {
+        sound.pause();
+        sound.currentTime = 0;
+      });
+    }
+
+    function speakText() {
+      var input = document.getElementById("ttsInput").value;
+      var speech = new SpeechSynthesisUtterance();
+      speech.text = input;
+      speech.volume = 0.5;
+      window.speechSynthesis.speak(speech);
+    }
+    function loudspeakText() {
+      var input = document.getElementById("ttsInput").value;
+      var speech = new SpeechSynthesisUtterance();
+      speech.text = input;
+      speech.volume = 10.0;
+      window.speechSynthesis.speak(speech);
+    }
+  </script>
+</body>
+
+</html>
