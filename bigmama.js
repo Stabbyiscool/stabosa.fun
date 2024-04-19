@@ -31,3 +31,31 @@ function animateTitle() {
 }
 
 animateTitle();
+document.addEventListener("DOMContentLoaded", function() {
+  var profilePicture = document.getElementById("profile");
+  var typedText = "";
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key.length === 1) {
+      typedText += event.key.toLowerCase();
+      if (typedText.slice(-4) === "spin") {
+        profilePicture.classList.toggle("spin-animation");
+        typedText = "";
+      }
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function() {
+  var cssLink = document.getElementById('css-link');
+  var typedText = "";
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key.length === 1) {
+      typedText += event.key.toLowerCase();
+      if (typedText.slice(-4) === "lsd") {
+        cssLink.href = 'lsd.css';
+        typedText = "";
+      }
+    }
+  });
+});
