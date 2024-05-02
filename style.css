@@ -117,8 +117,9 @@ body {
 
 .links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; 
   margin-top: 20px;
+  gap: 24px; 
 }
 
 .links a {
@@ -155,7 +156,6 @@ body {
   transform: scale(1.2);
 }
 
-/* New CSS */
 
 .code-input {
   margin-top: 20px;
