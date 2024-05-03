@@ -149,12 +149,12 @@ body {
   width: 30px;
   height: 30px;
   margin: 0 10px;
-  transition: transform 0.26s ease-in-out, filter 0.26s ease-in-out; /* Add filter transition */
+  transition: transform 0.26s ease-in-out, filter 0.26s ease-in-out;
 }
 
 .icons img:hover {
   transform: scale(1.2);
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)); /* Add glow effect */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .code-input {
