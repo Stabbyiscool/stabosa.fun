@@ -203,7 +203,7 @@ body {
 .profile-effect {
   position: absolute;
   top: 8%; 
-  left: 49.6%;
+  left: 50%;
   transform: translateX(-50%);
   width: 190px; 
   height: 190px; 
@@ -223,4 +223,7 @@ body {
     top: 22.3%;
     opacity: 1;
   }
+}
+#status {
+  margin-top: -20px;
 }

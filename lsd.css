@@ -192,8 +192,6 @@ body {
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)); /* Add glow effect */
 }
 
-/* New CSS */
-
 .code-input {
   margin-top: 20px;
   text-align: center;
