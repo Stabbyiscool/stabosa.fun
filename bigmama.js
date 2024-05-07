@@ -59,21 +59,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-fetch('https://api.lanyard.rest/v1/users/810404168702361611')
-.then(response => response.json())
-.then(data => {
-    if (data.success && data.data.discord_user) {
-        const avatarHash = data.data.discord_user.avatar;
-        const status = data.data.discord_status;
-        const avatarUrl = `https://cdn.discordapp.com/avatars/810404168702361611/${avatarHash}.png`;
-        document.getElementById('profile').src = avatarUrl;
-        const statusElement = document.getElementById('status');
-        statusElement.textContent = "Status: " + status;
-        statusElement.className = status === 'online' ? 'online' : status === 'dnd' ? 'dnd' : 'offline';
-    } else {
-        console.error('Error: Unable to fetch user data');
-    }
-})
-.catch(error => {
-    console.error('Error:', error);
-});
