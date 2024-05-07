@@ -7,10 +7,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #111;
+  background-color: #000000;
   font-family: 'Sora'; 
-  color: #fff;
+  color: #F05941;
 }
+
 .container {
   position: relative;
   width: 100vw;
@@ -89,7 +90,7 @@ body {
   top: calc(-30% - 120px);
   left: 50%;
   transform: translateX(-50%);
-  background-color: #414141;
+  background-color: #100f0d;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
@@ -134,8 +135,8 @@ body {
 }
 
 .links a:hover {
-  background-color: #fff;
-  color: #111;
+  background-color: #fff; 
+  color: #000;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
@@ -154,50 +155,7 @@ body {
 
 .icons img:hover {
   transform: scale(1.2);
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-}
-
-.code-input {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.code-input input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #777; 
-  border-radius: 5px;
-  background-color: #333; 
-  color: #fff; 
-  margin-right: 10px;
-  width: 200px; 
-}
-
-.code-input input[type="text"]::placeholder {
-  color: #aaa; 
-}
-
-.code-input input[type="submit"] {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.code-input input[type="submit"]:hover {
-  background-color: #45a049;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.spin-animation {
-  animation: spin 1s linear infinite;
+  filter: drop-shadow(0 0 10px #FFF);
 }
 
 .profile-effect {
@@ -224,6 +182,7 @@ body {
     opacity: 1;
   }
 }
-#status {
-  margin-top: -20px;
+.pronouns {
+    margin-top: -20px;
 }
+  

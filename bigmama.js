@@ -64,7 +64,7 @@ fetch('https://api.lanyard.rest/v1/users/810404168702361611')
 .then(data => {
     if (data.success && data.data.discord_user) {
         const avatarHash = data.data.discord_user.avatar;        
-        const avatarUrl = `https://cdn.discordapp.com/avatars/810404168702361611/${avatarHash}.png`;
+        const avatarUrl = `https://cdn.discordapp.com/avatars/810404168702361611/${avatarHash}.png?size=4096`;
         
         document.getElementById('profile').src = avatarUrl;
         
