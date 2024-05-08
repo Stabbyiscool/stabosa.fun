@@ -93,7 +93,7 @@ body {
   background-color: #141311;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.281);
   text-align: center;
   z-index: 2;
   opacity: 0;
