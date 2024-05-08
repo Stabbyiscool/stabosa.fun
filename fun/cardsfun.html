@@ -9,11 +9,9 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #471919;
-    font-family: 'Sora'; 
+    background-color: #100f0d;
+    font-family: 'Sora', sans-serif;
     overflow-x: hidden;
-    color: #8d3030;
-
   }
 
   ::-webkit-scrollbar {
@@ -46,12 +44,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid #4A1717;
+    border: 1px solid #100f0d;
     border-radius: 0px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    background-color: #4A1717;
+    background-color: #141111;
+    color: #fff;
     box-sizing: border-box;
     padding: 10px;
     transition: transform 0.3s ease;
@@ -72,8 +71,6 @@
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #8d3030; 
-    text-shadow: 0 0 3px #8d3030; 
   }
 
   .description {
@@ -82,27 +79,27 @@
   }
 
   .links {
-  display: flex;
-  justify-content: center; 
-  margin-top: 20px;
-  gap: 24px; 
-}
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
 
-.links a {
-  text-decoration: none;
-  color: #8d3030;
-  padding: 10px 15px;
-  border-radius: 20px;
-  transition: color 0.3s, text-shadow 0.3s; 
-  flex: 0 0 auto;
-  width: 150px;
-  text-align: center;
-}
+  .links a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    flex: 0 0 auto;
+    width: 150px;
+    text-align: center;
+  }
 
-.links a:hover {
-  color: #b63522; 
-  text-shadow: 0 0 8px #a54232; 
-}
+  .links a:hover {
+    background-color: #fff;
+    color: #111;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
 </style>
 </head>
 <body>
