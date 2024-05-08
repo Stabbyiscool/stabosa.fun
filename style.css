@@ -155,7 +155,7 @@ body {
 
 .icons img:hover {
   transform: scale(1.2);
-  filter: drop-shadow(0 0 10px #FFF);
+  filter: drop-shadow(0 0 5px #FFF);
 }
 
 .profile-effect {
