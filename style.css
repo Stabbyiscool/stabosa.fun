@@ -90,13 +90,13 @@ body {
   top: calc(-30% - 120px);
   left: 50%;
   transform: translateX(-50%);
-  background-color: #141311;
+  background-color: #471919;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(139, 5, 5, 0.2);
   text-align: center;
   z-index: 2;
-  opacity: 0;
+  opacity: 0.4;
   animation: slideInCard 1s ease forwards;
 }
 
@@ -107,13 +107,16 @@ body {
   }
   to {
     top: calc(30% + 120px);
-    opacity: 1;
+    opacity: 0.9;
   }
 }
 
-.card h2,
+.card h2 {
+  color: #8d3030; 
+  text-shadow: 0 0 3px #8d3030; 
+}
 .card p {
-  color: #fff;
+  color: #8d3030;
 }
 
 .links {
@@ -125,25 +128,24 @@ body {
 
 .links a {
   text-decoration: none;
-  color: #fff;
+  color: #8d3030;
   padding: 10px 15px;
   border-radius: 20px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: color 0.3s, text-shadow 0.3s; 
   flex: 0 0 auto;
   width: 150px;
   text-align: center;
 }
 
 .links a:hover {
-  background-color: #fff; 
-  color: #000;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  color: #b63522;
+  text-shadow: 0 0 8px #a54232;
 }
-
 .icons {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  filter: drop-shadow(0 0 3px #8d3030);
 }
 
 .icons img {
@@ -154,8 +156,7 @@ body {
 }
 
 .icons img:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 10px #FFF);
+  transform: scale(1.1);
 }
 
 .profile-effect {
