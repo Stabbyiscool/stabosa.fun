@@ -93,7 +93,7 @@ body {
   background-color: #141311;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.281);
   text-align: center;
   z-index: 2;
   opacity: 0;
@@ -128,16 +128,15 @@ body {
   color: #fff;
   padding: 10px 15px;
   border-radius: 20px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: color 0.3s, text-shadow 0.3s;
   flex: 0 0 auto;
   width: 150px;
   text-align: center;
 }
 
 .links a:hover {
-  background-color: #fff; 
-  color: #000;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  color: #fff;
+  text-shadow: 0 0 8px #fff; 
 }
 
 .icons {
@@ -155,7 +154,7 @@ body {
 
 .icons img:hover {
   transform: scale(1.2);
-  filter: drop-shadow(0 0 10px #FFF);
+  filter: drop-shadow(0 0 5px #FFF);
 }
 
 .profile-effect {

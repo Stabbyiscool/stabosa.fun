@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <h1>Maka image!</h1>
+    <p>api.stabosa.fun/maka</p>
+    <img id="apiImage" src="" alt="Image from API">
+    
+    <script>
+        async function fetchImage() {
+            try {
+                const response = await fetch('https://api.stabosa.fun/maka');
+                const data = await response.json();
+                const imageUrl = data.url;
+                document.getElementById('apiImage').src = imageUrl;
+            } catch (error) {
+                console.error('Error fetching image:', error);
+            }
+        }
+        
+        window.onload = fetchImage;
+    </script>
+</body>
+</html>
