@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@Stabosa⁸⁷</title>
@@ -11,28 +10,21 @@
   <meta property="og:image" content="https://Stabosa.fun/bicon.png">
   <meta property="og:description" content="Silly little developer that makes discord bots sometimes and other stuff ig">
   <meta property="og:url" content="Stabosa.fun">
+  <link rel="stylesheet" href="style.css" id="css-link">
+  <link rel="icon" type="image/png" href="https://Stabosa.fun/icon.png">
   <script src="bigmama.js"></script>
-  <link rel="stylesheet" href="https://Stabosa.fun/style.css" id="css-link">
 </head>
 
 <body>
   <div class="container">
-    <img class="background-image" src="xGQOmg.gif">
+    <img class="background-image" src="https://dcdn.dstn.to/banners/627905328075505683">
     <div class="blur-overlay"></div>
     <div class="image-container">
-      <img src="pfp.png" alt="Profile Picture">
-      </div>
-      <img src="https://ugc.decor.fieryflames.dev/a_abd5203243ad0ab748b18125cb9aa16a.png" alt="Profile Effect" class="profile-effect">
+      <img src="https://dcdn.dstn.to/avatars/627905328075505683" alt="Profile Picture">
     </div>
-    </div>
-    <div class="card">
-      <h2>404</h2>
-      <p>This page doesnt (Or no longer) exists</p>
-      <div class="links">
-        <a href="filedump">Downloads</a>
-        <a href="project">Projects</a>
-        <a href="Fun">Fun</a>
-      </div>
+    <div class="card" id="card">
+      <h2>Stabosa.fun</h2>
+      <p id="bio">Silly little developer that makes discord bots sometimes and other stuff ig</p>
       <div class="icons">
         <a href="https://Discord.com/users/810404168702361611"><img src="icons/discord.svg" alt="Discord Icon"></a>
         <a href="https://www.youtube.com/channel/UCzUbdo3E9i-UlUKxQPyapOg"><img src="icons/youtube.svg" alt="YouTube Icon"></a>
@@ -41,7 +33,34 @@
       </div>
     </div>
   </div>
-</body>
 
+  <script>
+    function formatDiscordText(text) {
+      text = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+      text = text.replace(/\n/g, '<br>');
+      return text;
+    }
+
+    fetch('https://dcdn.dstn.to/profile/627905328075505683')
+      .then(response => response.json())
+      .then(data => {
+        const bio = data.user_profile.bio;
+        const themeColors = data.user_profile.theme_colors.map(color => '#' + color.toString(16).padStart(6, '0'));
+        document.getElementById('bio').innerHTML = formatDiscordText(bio);
+        const card = document.getElementById('card');
+        card.style.background = `linear-gradient(135deg, ${themeColors[0]}, ${themeColors[0]})`;
+        card.style.borderTop = `5px solid ${themeColors[1]}`;
+        card.style.borderRight = `5px solid ${themeColors[0]}`;
+        card.style.borderBottom = `5px solid ${themeColors[0]}`;
+        card.style.borderLeft = `5px solid ${themeColors[0]}`;
+        card.style.boxShadow = `0 0 20px ${themeColors[0]}`;
+        card.style.borderImage = `linear-gradient(to bottom, ${themeColors[1]} 25%, ${themeColors[0]} 25%) 1 1 1 1`;
+
+        card.style.color = themeColors[1];
+        document.querySelectorAll('.card h2, .card p').forEach(el => el.style.color = themeColors[1]);
+      }) 
+      .catch(error => console.error('Error fetching data:', error));
+  </script>
+</body>
 
 </html>
